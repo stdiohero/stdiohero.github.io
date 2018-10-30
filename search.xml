@@ -4,8 +4,11 @@
     <title><![CDATA[Test]]></title>
     <url>%2F2018%2F10%2F15%2FTest%2F</url>
     <content type="text"><![CDATA[Hello Word这是一个测试，看看行不行，吼吼！]]></content>
+      <categories>
+        <category>others</category>
+      </categories>
       <tags>
-        <tag>others</tag>
+        <tag>test</tag>
       </tags>
   </entry>
 </search>
