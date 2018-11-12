@@ -430,7 +430,7 @@
 </ol>
 <p>首先是第一点，这个BUG的原因是由于Adam算法本身的计算公式导致的。由于Adam算法是一种自适应学习率的优化算法，因此在整个优化的过程中，Adam需要更新记录优化器本身的两个参数。</p>
 <blockquote>
-<p>具体的，Adam的计算公式如下：<br>$$m_t=\beta_1m_{t-1}+(1-\beta_1)g_t \<br>v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2$$<br>其中，$g_t$是参数的梯度，$m_t$和$v_t$初始化为0向量，因此，需要进行偏差校正；<br>$$\hat m_t=\frac{m_t}{1-\beta_1^t} \<br>\hat v_t=\frac{v_t}{1-\beta_2^t}$$<br>所以，最后Adam方法的梯度更新公式即为：<br>$$\theta_{t+1}=\theta_t-\frac{\eta}{\sqrt{\hat v_t}+\epsilon}\hat m_t$$<br>其中，$\beta_1=0.9,\ \beta_2=0.999,\ \epsilon=10^{-8},\ \eta=0.001$是超参数的建议取值。</p>
+<p>具体的，Adam的计算公式如下：<br>$$m_t=\beta_1m_{t-1}+(1-\beta_1)g_t \\<br>v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2$$<br>其中，$g_t$是参数的梯度，$m_t$和$v_t$初始化为0向量，因此，需要进行偏差校正；<br>$$\hat m_t=\frac{m_t}{1-\beta_1^t} \\<br>\hat v_t=\frac{v_t}{1-\beta_2^t}$$<br>所以，最后Adam方法的梯度更新公式即为：<br>$$\theta_{t+1}=\theta_t-\frac{\eta}{\sqrt{\hat v_t}+\epsilon}\hat m_t$$<br>其中，$\beta_1=0.9,\ \beta_2=0.999,\ \epsilon=10^{-8},\ \eta=0.001$是超参数的建议取值。</p>
 </blockquote>
 <p>所以，如果每次都重新初始化Adam优化器的话，最终的梯度更新公式就会变为$\theta_{t-1}=\theta_t-\eta$，梯度$g_t$被消掉了。所以，对于像Adam这种自适应学习率的优化器，只能在最开始的时候初始化一次。</p>
 <ol start="2">
