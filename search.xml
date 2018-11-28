@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[使用服务器搭建远程git仓库]]></title>
     <url>%2F2018%2F11%2F28%2F%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%BF%9C%E7%A8%8Bgit%E4%BB%93%E5%BA%93%2F</url>
-    <content type="text"><![CDATA[GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。具体的搭建流程其实很简单。 在服务器新建一个空仓库 1git init --bare &lt;repository name&gt;.git 在本地的项目路径中，输入命令 1git clone ssh://&lt;user@IP&gt;:&lt;repository path&gt; 然后输入账户密码即可，此时会有一个提示： warning: You appear to have cloned an empty repository. 不必在意，忽略即可。 将项目文件放到下载下来的文件夹中，然后执行命令：git add . git commit -m "create remote-repository" git push 输入密码，上传完毕。 至此，一个简单的私人git远程仓库就搭建完成了。]]></content>
+    <content type="text"><![CDATA[GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。 具体的搭建流程其实很简单。 在服务器新建一个空仓库，记录下路径&lt;repository path&gt; 1$ git init --bare &lt;repository name&gt;.git 在本地的项目路径中，输入下面的命令，然后输入账户密码即可，此时会有一个警告warning: You appear to have cloned an empty repository，不必在意，忽略即可。 1$ git clone ssh://&lt;user@IP&gt;:&lt;repository path&gt; 将项目文件放到下载下来的文件夹中，然后执行下面的命令，根据提示输入密码即可。 $ git add . $ git commit -m "create remote-repository" $ git push 至此，一个简单的私人git远程仓库就搭建完成了。]]></content>
       <categories>
         <category>git</category>
       </categories>

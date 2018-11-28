@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。具体的搭建流程其实很简单。  在服务器新建一个空仓库 1git init --bare &amp;lt;repository na">
+<meta name="description" content="GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。">
 <meta name="keywords" content="git,linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用服务器搭建远程git仓库">
 <meta property="og:url" content="http://stdiohero.github.io/2018/11/28/使用服务器搭建远程git仓库/index.html">
 <meta property="og:site_name" content="没事就来摸鱼">
-<meta property="og:description" content="GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。具体的搭建流程其实很简单。  在服务器新建一个空仓库 1git init --bare &amp;lt;repository na">
+<meta property="og:description" content="GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-28T10:36:03.323Z">
+<meta property="og:updated_time" content="2018-11-28T11:04:59.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用服务器搭建远程git仓库">
-<meta name="twitter:description" content="GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。具体的搭建流程其实很简单。  在服务器新建一个空仓库 1git init --bare &amp;lt;repository na">
+<meta name="twitter:description" content="GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。">
 
 
 
@@ -418,26 +418,22 @@
       
 
       
-        <p>GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。<br>具体的搭建流程其实很简单。</p>
+        <p>GitHub作为远程仓库已经是基本操作了，具体的使用方法也是老生常谈了。然而，github虽然好用，有时候也会有一些不方便的时候。比如，实验室的实验代码或者项目代码，没有公开发布的时候，肯定不方便放到github上面管理，那么，使用服务器搭建一个远程的git仓库就十分有必要了。</p>
+<a id="more"></a>
+<p>具体的搭建流程其实很简单。</p>
 <ol>
-<li><p>在服务器新建一个空仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare &lt;repository name&gt;.git</span><br></pre></td></tr></table></figure>
+<li><p>在服务器新建一个空仓库，记录下路径<code>&lt;repository path&gt;</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init --bare &lt;repository name&gt;.git</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在本地的项目路径中，输入命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> ssh://&lt;user@IP&gt;:&lt;repository path&gt;</span><br></pre></td></tr></table></figure>
+<li><p>在本地的项目路径中，输入下面的命令，然后输入账户密码即可，此时会有一个警告<code>warning: You appear to have cloned an empty repository</code>，不必在意，忽略即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> ssh://&lt;user@IP&gt;:&lt;repository path&gt;</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>然后输入账户密码即可，此时会有一个提示：</p>
-<blockquote>
-<p>warning: You appear to have cloned an empty repository.</p>
-</blockquote>
-<p>不必在意，忽略即可。</p>
-<ol start="3">
-<li>将项目文件放到下载下来的文件夹中，然后执行命令：<pre><code class="bash">git add .
-git commit -m <span class="string">"create remote-repository"</span>
-git push
+<li><p>将项目文件放到下载下来的文件夹中，然后执行下面的命令，根据提示输入密码即可。</p>
+<pre><code class="bash">$ git add .
+$ git commit -m <span class="string">"create remote-repository"</span>
+$ git push
 </code></pre>
-输入密码，上传完毕。</li>
+</li>
 </ol>
 <p>至此，一个简单的私人git远程仓库就搭建完成了。</p>
 

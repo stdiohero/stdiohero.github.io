@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="没事就来摸鱼">
 <meta property="og:description" content="前几天用Pytorch实现one-step的Actor-Critic算法的时候，遇到了坑，这里记录一下。 因为看的几版pytorch实现的Actor-Critic，代码风格都不是很符合个人习惯。因此，参照莫凡的tensorflow版Actor-Critic的网络结构，自己动手实现了一版Actor-Critci算法的demo。具体的算法参考的是强化学习神作，Sutton的Rienforcement">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-12T12:48:13.849Z">
+<meta property="og:updated_time" content="2018-11-28T11:04:41.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pytorch踩坑">
 <meta name="twitter:description" content="前几天用Pytorch实现one-step的Actor-Critic算法的时候，遇到了坑，这里记录一下。 因为看的几版pytorch实现的Actor-Critic，代码风格都不是很符合个人习惯。因此，参照莫凡的tensorflow版Actor-Critic的网络结构，自己动手实现了一版Actor-Critci算法的demo。具体的算法参考的是强化学习神作，Sutton的Rienforcement">
@@ -433,6 +433,7 @@
 <p>因为看的几版pytorch实现的Actor-Critic，代码风格都不是很符合个人习惯。因此，参照莫凡的tensorflow版Actor-Critic的网络结构，自己动手实现了一版Actor-Critci算法的demo。<br>具体的算法参考的是强化学习神作，Sutton的<em>Rienforcement Learning: An Introduction 2nd</em>中的第13章中的one-step Actor-Critic算法的伪代码。</p>
 <p>为了和tensorflow版的代码进行对比，我把pytorch版本的网络结构设置的和tensorflow版本的结构一样，然后，对于网络参数的初始化，使用了相同的分布初始化权重，设置了相同的偏置。同时，包括学习速率$\alpha$和折扣因子$\gamma$的设置也保持一致。但是，最后两个模型的性能却差距巨大。</p>
 <p>经过反复的检查以及向同学请教了关于tensorflow的一些知识（笔者对于tensorflow实在是不熟悉）之后，终于找到了两个导致这一诡异现象的BUG。</p>
+<a id="more"></a>
 <ol>
 <li>optim.Adam()优化器重复初始化。</li>
 </ol>
